@@ -1,0 +1,29 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# Temporary files
+*.log
+*.tmp
+*.cache
+
+# IDE
+.vscode/
+.idea/
+
+# Operating system
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backups
+*.bak
+*.old
+
+# Database backups (if they contain private data)
+*.sql

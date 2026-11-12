@@ -1,0 +1,2 @@
+# Configuration and credentials must never be served directly.
+Require all denied

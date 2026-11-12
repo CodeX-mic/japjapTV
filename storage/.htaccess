@@ -1,0 +1,2 @@
+# Private runtime storage. Cache files live outside the web root by default.
+Require all denied

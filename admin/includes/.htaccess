@@ -1,0 +1,2 @@
+# Admin include files are loaded by PHP only.
+Require all denied

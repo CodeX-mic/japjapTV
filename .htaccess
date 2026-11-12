@@ -1,0 +1,29 @@
+# japjapTV — Apache hardening
+# Requires AllowOverride All for this directory (see README.md).
+
+Options -Indexes
+DirectoryIndex index.php index.html
+ServerSignature Off
+
+<IfModule mod_headers.c>
+    Header always setifempty X-Content-Type-Options "nosniff"
+    Header always setifempty X-Frame-Options "SAMEORIGIN"
+    Header always setifempty Referrer-Policy "strict-origin-when-cross-origin"
+    Header always setifempty Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+    Header always setifempty X-Permitted-Cross-Domain-Policies "none"
+    Header always unset X-Powered-By
+</IfModule>
+
+# Never serve source-control metadata, configuration dumps, logs, backups,
+# database exports, or documentation files through the web server.
+<FilesMatch "(^\.|\.(?:env|ini|log|sql|md|lock|bak|old|orig|swp|dist|example|sh|bat|cmd|ps1)$)">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^(?:composer\.(?:json|lock)|package(?:-lock)?\.json|yarn\.lock|phpunit\.xml(?:\.dist)?)$">
+    Require all denied
+</FilesMatch>
+
+# Basic hardening for uploads and sensitive include folders is handled by
+# .htaccess files inside those directories.
+AddDefaultCharset UTF-8
